@@ -1,7 +1,7 @@
 name: PR
 on:
   push:
-    branches: feature
+    branches: develop
     
 jobs:
   action-pull-request:
@@ -15,12 +15,13 @@ jobs:
 
       - name: Update author information
         run: echo ${{ env.GIT_COMMIT_AUTHOR_NAME }} > AUTHOR
+        
       - name: Raise PR 
         uses: peter-evans/create-pull-request@v3
         with:
-          branch: "develop"
-          base: feature
-          title: "auto PR from feature to develop"
+          branch: "main"
+          base: develop
+          title: "auto PR from develop to main"
           committer: ${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}">
           author: ${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}">
           body:
