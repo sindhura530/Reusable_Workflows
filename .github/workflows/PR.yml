@@ -1,7 +1,7 @@
 name: PR
 on:
   push:
-    branches: feature
+    branches: develop
     
 jobs:
   action-pull-request:
