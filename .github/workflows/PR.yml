@@ -1,22 +1,18 @@
-name: Auto-PR
+# File: .github/workflows/pull-request.yml
+name: PR
+
 on:
   push:
-    branches: ['feature']
+    branches:
+    - feature
 
 jobs:
   pull-request:
-    name: PR
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-      name: checkout
-
-    - uses: repo-sync/pull-request@v2
-      name: pull-request
+    - name: pull-request
+      uses: repo-sync/pull-request@v2
       with:
         destination_branch: "develop"
-        base: feature
-        pr_title: "Auto PR from feature to develop"
-        pr_body: "👑 *An automated PR*"
-        pr_reviewer: "kingdonb"
         github_token: ${{ secrets.GITHUB_TOKEN }}
