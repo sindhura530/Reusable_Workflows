@@ -18,19 +18,14 @@ jobs:
       - name: Build_Image
         shell: pwsh
         run: |          
-          $Unique_DIR_List=(Get-Item $dir_list -Exclude "*.ps1", "*.properties", "Jenkinsfile", "pipelineconfig.yml", ".gitingore", "*.md"  | Select-Object -Unique).name
-          if($Unique_DIR_List.Length -ne 0){
-            foreach($j in $Unique_DIR_List){
-              set-location $j
-              $image=$j.tolower()
+              $image=img1
               Write-Host "$image is getting build"
               docker build -t $image .
               $image_FQDN="stellantis-harbor.artifactory.intra.fcagroup.com/$image:v1.0"
               Write-Host "$image is getting build"
               docker tag $image $image_FQDN
               Write-Host "$image is getting tagged to $image_FQDN"
-              }
-            }
+            
               
              
         
