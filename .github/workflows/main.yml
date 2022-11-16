@@ -2,6 +2,9 @@ name: DockerCI2
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+    - feature
 
 jobs:
   build:
