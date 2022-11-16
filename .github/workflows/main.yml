@@ -18,9 +18,7 @@ jobs:
         
       - name: build docker-image 
         run: |
-             #docker build -f ./Dockerfile -t image1 . 
-             #docker build --no-cache -t openjdk11-node14-gradle7.3:v11.0.13 .
-             docker build --no-cache -t img1 . 
-     
+             #docker build --no-cache -t img1 . 
+             docker build -t img1t:$(docker images | awk '($1 == "img1") {print $2 += .01; exit}') .
         
        
