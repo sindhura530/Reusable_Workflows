@@ -29,6 +29,8 @@ jobs:
               Write-Host "$image is getting build"
               docker tag $image $image_FQDN
               Write-Host "$image is getting tagged to $image_FQDN"
+              }
+            }
               
              
         
