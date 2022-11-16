@@ -18,12 +18,11 @@ jobs:
       - name: Build_Image
         shell: pwsh
         run: |          
-              $image=img1
               Write-Host "$image is getting build"
               docker build -t img1 .
               $image_FQDN="stellantis-harbor.artifactory.intra.fcagroup.com/$image:v1.0"
               Write-Host "$image is getting build"
-              docker tag $image $image_FQDN
+              docker tag img1 $image_FQDN
               Write-Host "$image is getting tagged to $image_FQDN"
             
               
