@@ -20,7 +20,7 @@ jobs:
         run: |          
               $image=img1
               Write-Host "$image is getting build"
-              docker build -t $image .
+              docker build -t img1 .
               $image_FQDN="stellantis-harbor.artifactory.intra.fcagroup.com/$image:v1.0"
               Write-Host "$image is getting build"
               docker tag $image $image_FQDN
