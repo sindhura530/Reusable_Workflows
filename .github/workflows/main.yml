@@ -20,5 +20,21 @@ jobs:
         run: |
              #docker build --no-cache -t img1 . 
              docker build -t img1t:$(docker images | awk '($1 == "img1") {print $2 += .01; exit}') .
+      - name: Build_Image
+        shell: pwsh
+        run: |          
+          $Unique_DIR_List=(Get-Item $dir_list -Exclude "*.ps1", "*.properties", "Jenkinsfile", "pipelineconfig.yml", ".gitingore", "*.md"  | Select-Object -Unique).name
+          if($Unique_DIR_List.Length -ne 0){
+            foreach($j in $Unique_DIR_List){
+              set-location $j
+              $image=$j.tolower()
+              Write-Host "$image is getting build"
+              docker build -t $image .
+              $image_FQDN="stellantis-harbor.artifactory.intra.fcagroup.com/$image:v1.0"
+              Write-Host "$image is getting build"
+              docker tag $image $image_FQDN
+              Write-Host "$image is getting tagged to $image_FQDN"
+              
+             
         
        
