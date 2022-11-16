@@ -14,12 +14,7 @@ jobs:
         with:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
-    
-        
-      - name: build docker-image 
-        run: |
-             #docker build --no-cache -t img1 . 
-             docker build -t img1t:$(docker images | awk '($1 == "img1") {print $2 += .01; exit}') .
+          
       - name: Build_Image
         shell: pwsh
         run: |          
