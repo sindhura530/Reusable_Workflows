@@ -20,3 +20,6 @@ jobs:
       - name: build docker image
         run: docker build .
         #docker build -t your/project:$(docker images | awk '($1 == "your/project") {print $2 += .01; exit}') .
+        
+        
+        
